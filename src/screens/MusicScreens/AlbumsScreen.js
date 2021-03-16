@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef } from "react";
+import React, {useCallback, useMemo, useRef} from 'react';
 import {
   StyleSheet,
   View,
@@ -6,53 +6,49 @@ import {
   ActivityIndicator,
   FlatList,
   ScrollView,
-} from "react-native";
-import { Button, Text, Image } from "react-native-elements";
-import Spacer from "../../components/Spacer";
-import Feather from "react-native-vector-icons/Feather";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+} from 'react-native';
+import {Button, Text, Image} from 'react-native-elements';
+import Spacer from '../../components/Spacer';
+import Feather from 'react-native-vector-icons/Feather';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import Song from "../../components/Song";
-// import {
-//   BottomSheetModal,
-//   BottomSheetModalProvider,
-// } from "@gorhom/bottom-sheet";
+import Song from '../../components/Song';
+import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 // import { useNavigation } from "@react-navigation/native";
 
-const songs = ["Harekat", "Daar", "Asayeshgah", "Pelikan"];
-const AlbumsScreen = ({ navigation, route }) => {
+const songs = ['Harekat', 'Daar', 'Asayeshgah', 'Pelikan'];
+const AlbumsScreen = ({navigation, route}) => {
   // ref
-  // const bottomSheetModalRef = useRef(BottomSheetModal);
+  const bottomSheetModalRef = useRef(BottomSheetModal);
 
-  // // variables
-  // const snapPoints = useMemo(() => ["25%", "25%"], []);
+  // variables
+  const snapPoints = useMemo(() => ['25%', '25%'], []);
 
-  // // callbacks
-  // const handlePresentModalPress = useCallback(() => {
-  //   bottomSheetModalRef.current?.present();
-  // }, []);
-  // const handleSheetChanges = useCallback((index) => {
-  //   console.log("handleSheetChanges", index);
-  // }, []);
+  // callbacks
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
+  const handleSheetChanges = useCallback(index => {
+    console.log('handleSheetChanges', index);
+  }, []);
 
-  const { title } = route.params;
+  const {title} = route.params;
   // const navigation = useNavigation()
   return (
-    // <BottomSheetModalProvider>
-    //   <BottomSheetModal
-    //       ref={bottomSheetModalRef}
-    //       index={1}
-    //       snapPoints={snapPoints}
-    //       onChange={handleSheetChanges}
-    //     >
-    //       <View style={styles.bottomSheetContainer}>
-    //         {/* <Text>Awesome 🎉</Text> */}
-    //         <Button title='Add to playlist' type='clear'/>
-    //         <Button title='Add to favorites' type='clear'/>
-    //         <Button title='Album Page' type='clear'/>
-    //         <Button title='Artist Page' type='clear'/>
-    //       </View>
-    //     </BottomSheetModal>
+    <BottomSheetModalProvider>
+      <BottomSheetModal
+        ref={bottomSheetModalRef}
+        index={1}
+        snapPoints={snapPoints}
+        onChange={handleSheetChanges}>
+        <View style={styles.bottomSheetContainer}>
+          {/* <Text>Awesome 🎉</Text> */}
+          <Button title="Add to playlist" type="clear" />
+          <Button title="Add to favorites" type="clear" />
+          <Button title="Album Page" type="clear" />
+          <Button title="Artist Page" type="clear" />
+        </View>
+      </BottomSheetModal>
       <FlatList
         ListHeaderComponent={
           <View>
@@ -64,14 +60,14 @@ const AlbumsScreen = ({ navigation, route }) => {
                   <TouchableOpacity onPress={() => navigation.goBack()}>
                     <MaterialIcons name="arrow-back" size={24} />
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => console.log("Send")}>
+                  <TouchableOpacity onPress={() => console.log('Send')}>
                     <Feather name="send" size={24} />
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => console.log("Download")}>
+                  <TouchableOpacity onPress={() => console.log('Download')}>
                     <Feather name="download" size={24} />
                   </TouchableOpacity>
-                  {/* <TouchableOpacity onPress={handlePresentModalPress}> */}
-                  <TouchableOpacity onPress={() => console.log("More")}>
+                  {/* <TouchableOpacity onPress={() => console.log("More")}> */}
+                  <TouchableOpacity onPress={handlePresentModalPress}>
                     <Feather name="more-vertical" size={24} />
                   </TouchableOpacity>
                 </View>
@@ -83,8 +79,8 @@ const AlbumsScreen = ({ navigation, route }) => {
             </Spacer>
             <Spacer />
             <Image
-              source={{ uri: "http://alisorena.info/images/3.jpg" }}
-              style={{ width: 200, height: 200 }}
+              source={{uri: 'http://alisorena.info/images/3.jpg'}}
+              style={{width: 200, height: 200}}
               PlaceholderContent={<ActivityIndicator />}
             />
             <Spacer />
@@ -92,25 +88,24 @@ const AlbumsScreen = ({ navigation, route }) => {
           </View>
         }
         data={songs}
-        renderItem={({ item }) => {
+        renderItem={({item}) => {
           return (
             <Spacer>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate("PlayingSongScreen", {
+                  navigation.navigate('PlayingSongScreen', {
                     songTitle: item,
                     albumTitle: title,
                   });
-                }}
-              >
+                }}>
                 <Song songTitle={item} />
               </TouchableOpacity>
             </Spacer>
           );
         }}
-        keyExtractor={(item) => item}
+        keyExtractor={item => item}
       />
-    // </BottomSheetModalProvider>
+    </BottomSheetModalProvider>
   );
 };
 
@@ -122,12 +117,12 @@ const styles = StyleSheet.create({
     // justifyContent: 'center'
   },
   buttons: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   playButton: {
     width: 200,
     height: 40,
-    backgroundColor: "#fcd009",
+    backgroundColor: '#fcd009',
   },
 });
