@@ -14,7 +14,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Song from '../../components/Song';
 import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
-// import { useNavigation } from "@react-navigation/native";
 
 const songs = ['Harekat', 'Daar', 'Asayeshgah', 'Pelikan'];
 const AlbumsScreen = ({navigation, route}) => {
@@ -66,7 +65,6 @@ const AlbumsScreen = ({navigation, route}) => {
                   <TouchableOpacity onPress={() => console.log('Download')}>
                     <Feather name="download" size={24} />
                   </TouchableOpacity>
-                  {/* <TouchableOpacity onPress={() => console.log("More")}> */}
                   <TouchableOpacity onPress={handlePresentModalPress}>
                     <Feather name="more-vertical" size={24} />
                   </TouchableOpacity>
@@ -79,7 +77,7 @@ const AlbumsScreen = ({navigation, route}) => {
             </Spacer>
             <Spacer />
             <Image
-              source={{uri: 'http://alisorena.info/images/3.jpg'}}
+              source={{uri: 'https://s16.picofile.com/file/8428268076/3.jpg'}}
               style={{width: 200, height: 200}}
               PlaceholderContent={<ActivityIndicator />}
             />

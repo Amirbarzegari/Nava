@@ -1,10 +1,11 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-// import {enableScreens} from 'react-native-screens';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
+// import {createStackNavigator} from '@react-navigation/stack';
+import {enableScreens} from 'react-native-screens';
+import {createNativeStackNavigator} from 'react-native-screens/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AlbumsScreen from './src/screens/MusicScreens/AlbumsScreen';
 import DiscoverScreen from './src/screens/MusicScreens/DiscoverScreen';
@@ -17,10 +18,11 @@ import ChatScreen from './src/screens/ChatScreens/ChatScreen';
 import SearchScreen from './src/screens/SearchScreens/SearchScreen';
 import ProfileScreen from './src/screens/ProfileScreens/ProfileScreen';
 
-const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
+enableScreens();
 
-// enableScreens();
+const Stack = createNativeStackNavigator();
+// const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 function mainFlow() {
   return (
@@ -33,6 +35,18 @@ function mainFlow() {
     </Tab.Navigator>
   );
 }
+
+// const MyTheme = {
+//   dark: true,
+//   colors: {
+//     primary: 'rgb(255, 45, 85)',
+//     background: 'rgb(242, 242, 242)',
+//     card: 'rgb(255, 255, 255)',
+//     text: 'rgb(28, 28, 30)',
+//     border: 'rgb(199, 199, 204)',
+//     notification: 'rgb(255, 69, 58)',
+//   },
+// };
 
 const App = () => {
   return (

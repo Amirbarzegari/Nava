@@ -61,7 +61,6 @@ const PlayingSongScreen = ({route}) => {
                 <Feather name="download" size={24} />
               </Spacer>
 
-              {/* <TouchableOpacity onPress={() => console.log("More")}> */}
               <TouchableOpacity onPress={handlePresentModalPress}>
                 <Spacer>
                   <Feather name="more-vertical" size={24} />
@@ -72,7 +71,7 @@ const PlayingSongScreen = ({route}) => {
           <View style={{alignItems: 'center'}}>
             <Spacer />
             <Image
-              source={{uri: 'http://alisorena.info/images/3.jpg'}}
+              source={{uri: 'https://s16.picofile.com/file/8428268076/3.jpg'}}
               style={styles.cover}
               PlaceholderContent={<ActivityIndicator />}
             />

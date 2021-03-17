@@ -1,16 +1,16 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity, FlatList, ScrollView } from "react-native";
-import { Button, Text } from "react-native-elements";
+import { Text } from "react-native-elements";
 import Album from "../../components/Album";
 import Spacer from "../../components/Spacer";
 import Feather from "react-native-vector-icons/Feather";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { useNavigation } from "@react-navigation/native";
+// import { useNavigation } from "@react-navigation/native";
 
 const albums = ["The Social Network", "Gavazn", "Sade", "Negar"];
 
-const MusicScreen = () => {
-  const navigation = useNavigation();
+const MusicScreen = ({navigation}) => {
+  // const navigation = useNavigation();
   return (
     <ScrollView>
       <Spacer />
@@ -25,7 +25,6 @@ const MusicScreen = () => {
         </View>
       </Spacer>
 
-      
       <Spacer>
         <View style={styles.subtitle}>
           <Text h3>Recently Played</Text>
